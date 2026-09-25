@@ -1,7 +1,10 @@
-# RAP Phased Retrieval-Augmented Reasoning for Incident-Aware Traffic PredictionAP: standalone Tool LLM runtime
+# RAP Phased Retrieval-Augmented Reasoning for Incident-Aware Traffic Prediction
+
+<p align="center">
+<img src="./image/framework.png" height = "450" alt="" align=center />
+</p>
 
 A phased retrieval-augmented reasoning framework for incident-aware traffic prediction that combines a foundation spatio-temporal model with LLM-based contextual reasoning. RAP consists of two key components. Historical Knowledge Discovery extracts three complementary forms of transferable, heterogeneous evidence from historical traffic data: incident patterns, normal counterfactual sequences, and experience trajectories. Specifically, RAP retrieves similar historical incident cases to identify previously observed incident-induced effects and selects incident-free traffic windows from the same target node to construct normal counterfactual sequences that characterize ordinary traffic patterns. It further summarizes completed forecasting episodes, including their contexts, predictions, observed outcomes, and reflections, into reusable experience trajectories. Together, these sources provide complementary empirical evidence for reasoning about incident-induced traffic dynamics, addressing. Context-Aware Phased Reasoning organizes the heterogeneous evidence into a context analysis process and a phased prediction process driven by an LLM. It first evaluates the relevance and reliability of the retrieved evidence, consolidating complementary and conflicting signals into a compact context. It then partitions the forecasting horizon into distinct impact phases (e.g., disruption and recovery) and performs phase-consistent reasoning to generate reliable predictions, addressing.
-
 
 ## Install
 
@@ -14,10 +17,6 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-
-The copied model factory includes every model architecture supported by the
-current checkpoint loader. A matching PyTorch checkpoint is still required at
-run time; checkpoints are deliberately not distributed here.
 
 ## External assets
 
@@ -39,15 +38,8 @@ RAP/
 └── src/llmmanager/providers.json
 ```
 
-The dataset download URL is distributed separately with the project. Keep the
-download outside version control and unpack it under `RAP/data/`; the checked
-out repository only reserves `RAP/data/` with `.gitkeep`.
-
-The default region paths are defined in `src/data/regions.py`. Use `--data-dir`
-and `--checkpoint` when your local layout differs. OSRM distance and bearing
-cache data must be available for the configured impact bands. The default
-configuration expects an OSRM service at `http://127.0.0.1:5000`; change this
-in `configs/default.json` if a prepared cache or another service is used.
+The dataset download [[Google Drive]](https://drive.google.com/file/d/15Zk2RaGPExvhzzV0qyOmdd9zE9uFNqGT/view?usp=drive_link) is distributed separately with the project. Keep the
+download outside version control and unpack it under `RAP/data/`.
 
 ## Provider configuration
 
@@ -81,12 +73,6 @@ For a normal multi-case selection, omit `--incident-id` and use
 `--select-count`/`--select-month`. `--incident-workers`, `--device`, and
 `--config` expose the same controls as the current project entry point.
 
-Without `--call-llm`, the runtime still prepares Base, Normal, and retrieval
-evidence but does not send forecast or reflection requests. LLM output and
-case artifacts are written below the requested output directory; retrieval and
-episode caches are kept under the corresponding `artifacts_<region>/` paths or
-the output directory as configured by the runtime.
-
 ## Configuration
 
 `configs/default.json` preserves the current context switches and retrieval
@@ -95,20 +81,6 @@ and all Base-dependent retrieval; `normal_reference` controls Normal retrieval
 and all Normal-dependent evidence. `phased_prediction` selects the current
 structured phase output contract. The three incident retrieval groups and
 their top-k values are configured independently under `retrieval`.
-
-## Minimal verification
-
-These checks do not require data, a checkpoint, or a provider key:
-
-```bash
-python RAP/main.py --help
-python -m compileall -q RAP/src RAP/main.py
-```
-
-The first command verifies the standalone CLI can be imported without loading
-heavy model dependencies. The second verifies every copied Python module is
-syntactically complete. A real forecast requires the external assets and
-dependencies above; `--help` cannot validate those external services.
 
 ## Repository contents
 
@@ -124,3 +96,4 @@ RAP/
 ├── requirements.txt
 └── README.md
 ```
+
