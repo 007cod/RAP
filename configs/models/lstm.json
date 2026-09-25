@@ -1,0 +1,4 @@
+{
+  "model": {"input_channels": 32, "hidden_channels": 64, "end_channels": 256, "layers": 2, "dropout": 0.1},
+  "training": {"epochs": 80, "batch_size": 128, "learning_rate": 0.001, "weight_decay": 0.0001, "num_workers": 0}
+}

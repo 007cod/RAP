@@ -1,0 +1,4 @@
+{
+  "model": {"hid_dim": 32, "num_layers": 3, "tau": 0.25, "random_feature_dim": 64, "node_dim": 32, "time_dim": 32, "time_num": 288, "week_num": 7, "dropout": 0.3, "use_residual": true, "use_bn": true},
+  "training": {"epochs": 80, "batch_size": 96, "learning_rate": 0.001, "weight_decay": 0.0001, "num_workers": 0}
+}

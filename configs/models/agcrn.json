@@ -1,0 +1,4 @@
+{
+  "model": {"embed_dim": 10, "hidden_channels": 64, "layers": 2, "cheb_order": 2},
+  "training": {"epochs": 80, "batch_size": 64, "learning_rate": 0.001, "weight_decay": 0.0001, "num_workers": 16}
+}

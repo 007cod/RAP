@@ -1,0 +1,4 @@
+{
+  "model": {"cheb_order": 3, "blocks": 2, "graph_channels": 64, "time_channels": 64, "time_stride": 1},
+  "training": {"epochs": 80, "batch_size": 64, "learning_rate": 0.001, "weight_decay": 0.0001, "num_workers": 0}
+}

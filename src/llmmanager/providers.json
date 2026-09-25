@@ -1,0 +1,20 @@
+{
+  "default_route": "forecast",
+  "providers": {
+    "openai_compatible": {
+      "type": "openai_compatible",
+      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-5.6-luna",
+      "api_key": "${RAP_LLM_API_KEY}",
+      "temperature": 0.0,
+      "timeout_seconds": 300,
+      "max_attempts": 5,
+      "retry_backoff_seconds": 1.0,
+      "retry_backoff_max_seconds": 16.0
+    }
+  },
+  "routes": {
+    "forecast": {"pool": ["openai_compatible"], "fallback": []},
+    "reflection": {"pool": ["openai_compatible"], "fallback": []}
+  }
+}

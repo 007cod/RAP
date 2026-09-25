@@ -1,0 +1,55 @@
+{
+    "run": {
+      "output_root": "outputs",
+      "device": "cuda:3"
+    },
+    "impact_scope": {
+      "osrm_base_url": "http://127.0.0.1:5000",
+      "osrm_profile": "driving",
+      "osrm_timeout_seconds": 30,
+      "layer_rules": [
+        {"min_exclusive_km": 0.0, "max_inclusive_km": 0.5},
+        {"min_exclusive_km": 0.5, "max_inclusive_km": 1.0},
+        {"min_exclusive_km": 1.0, "max_inclusive_km": 1.5}
+      ]
+    },
+    "context": {
+      "similar_incident_cases": true,
+      "normal_reference": true,
+      "previous_layer_nodes": true,
+      "episode_memory": true,
+      "base_prediction": true,
+      "phased_prediction": true
+    },
+    "memory": {
+      "retention_days": 90,
+      "search_window_days": 120,
+      "recency_half_life_days": 30,
+      "max_entries": 2000,
+      "retrieval_top_k": 3,
+      "min_similarity": 0.50,
+      "min_base_mae": 15.0,
+      "min_failure_delta": 10.0
+    },
+    "concurrency": {
+      "incident_workers": 30,
+      "max_concurrent_llm_requests": 20,
+      "reflection_workers": 10,
+      "reflection_request_limit": 4,
+      "normal_retrieval_workers": 8,
+      "context_retrieval_workers": 2
+    },
+    "retrieval": {
+      "similar_incident_vector_candidates": 50,
+      "incident_network_time_top_k": 3,
+      "incident_history_top_k": 3,
+      "incident_base_normal_top_k": 3,
+      "incident_retrieval_min_score": 0.8,
+      "normal_reference_top_k": 10,
+      "normal_reference_min_score": 0.6,
+      "no_incident_local_radius_km": 5.0,
+      "incident_report_delay_buffer_minutes": 30,
+      "unknown_incident_duration_minutes": 60
+    }
+  }
+  

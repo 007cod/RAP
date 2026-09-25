@@ -1,0 +1,4 @@
+{
+  "model": {"temporal_kernel": 3, "cheb_order": 3, "blocks": 2, "temporal_channels": 64, "spatial_channels": 16, "dropout": 0.3},
+  "training": {"epochs": 80, "batch_size": 96, "learning_rate": 0.001, "weight_decay": 0.0001, "num_workers": 0}
+}
