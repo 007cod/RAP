@@ -1,14 +1,7 @@
-# RAP: standalone Tool LLM runtime
+# RAP Phased Retrieval-Augmented Reasoning for Incident-Aware Traffic PredictionAP: standalone Tool LLM runtime
 
-`RAP/` is a self-contained copy of the current Tool LLM implementation. The
-runtime under `src/` is copied from the parent project, including the traffic
-data loader, OSRM route handling, Base forecaster, Normal counterfactual
-retrieval, incident retrieval indexes, paired-state evidence, episode memory,
-reflection, prompt construction, response parsing, and provider scheduling.
+A phased retrieval-augmented reasoning framework for incident-aware traffic prediction that combines a foundation spatio-temporal model with LLM-based contextual reasoning. RAP consists of two key components. Historical Knowledge Discovery extracts three complementary forms of transferable, heterogeneous evidence from historical traffic data: incident patterns, normal counterfactual sequences, and experience trajectories. Specifically, RAP retrieves similar historical incident cases to identify previously observed incident-induced effects and selects incident-free traffic windows from the same target node to construct normal counterfactual sequences that characterize ordinary traffic patterns. It further summarizes completed forecasting episodes, including their contexts, predictions, observed outcomes, and reflections, into reusable experience trajectories. Together, these sources provide complementary empirical evidence for reasoning about incident-induced traffic dynamics, addressing. Context-Aware Phased Reasoning organizes the heterogeneous evidence into a context analysis process and a phased prediction process driven by an LLM. It first evaluates the relevance and reliability of the retrieved evidence, consolidating complementary and conflicting signals into a compact context. It then partitions the forecasting horizon into distinct impact phases (e.g., disruption and recovery) and performs phase-consistent reasoning to generate reliable predictions, addressing.
 
-This release intentionally contains no traffic dataset, OSRM cache, model
-checkpoint, experiment output, baseline evaluator, visualization code, or API
-key. Put those external assets in the locations described below.
 
 ## Install
 
